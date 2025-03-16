@@ -9,7 +9,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAuth0({
       domain: 'kahan2607.jp.auth0.com',
-      clientId: '8BjHg211CN1WrngcXMO0IAB9XVkPf7fW',
+      clientId: 'fDvyk8ovpSWD9ivJYNmoPtCtqWgJMGzM',
       authorizationParams: {
         redirect_uri: window.location.origin
       }

@@ -8,10 +8,5 @@ import { AuthService } from '@auth0/auth0-angular';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  constructor(private auth: AuthService) {
-  }
-
-  logout(){
-    this.auth.logout();
-  }
+  
 }

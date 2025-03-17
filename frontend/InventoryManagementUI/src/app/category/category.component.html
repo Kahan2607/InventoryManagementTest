@@ -1,18 +1,22 @@
 <!-- <p>category works!</p> -->
- 
-<table class="category-list-table" *ngIf="categoryItems.length > 0">
-    <thead>
-      <tr>
-        <th>CategoryId</th>
-        <th>CategoryName</th>
-        <th>Active</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let items of categoryItems">
-        <td>{{ items.categoryId }}</td>
-        <td>{{ items.name }}</td>
-        <td>{{ items.active }}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+    
+  <button (click)="openDialog()">Add Category</button>
+
+  <table class="category-list-table" *ngIf="categoryItems.length > 0">
+      <thead>
+        <tr>
+          <th>CategoryId</th>
+          <th>CategoryName</th>
+          <th>Active</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let items of categoryItems">
+          <td>{{ items.categoryId }}</td>
+          <td>{{ items.name }}</td>
+          <td>{{ items.active }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

@@ -3,6 +3,8 @@ import { CategoryService } from '../services/category.service';
 import { Category } from '../model/category.type';
 import { catchError } from 'rxjs';
 import { NgFor, NgIf } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogueBoxComponent } from '../components/dialogue-box/dialogue-box.component';
 
 @Component({
   selector: 'app-category',
@@ -12,7 +14,7 @@ import { NgFor, NgIf } from '@angular/common';
 })
 export class CategoryComponent {
   categoryItems: Array<Category> = ([])
-  constructor(private categoryService: CategoryService){
+  constructor(private categoryService: CategoryService, public dialog: MatDialog){
 
   }
 
@@ -25,6 +27,17 @@ export class CategoryComponent {
       })
     ).subscribe((data: Category[]) => {
       this.categoryItems = data;
+    });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogueBoxComponent, {
+      width: '50%',
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
+      data:{
+        title: 'Add Edit'
+      }
     });
   }
   

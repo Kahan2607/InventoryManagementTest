@@ -11,7 +11,7 @@ export const appConfig: ApplicationConfig = {
       domain: 'kahan2607.jp.auth0.com',
       clientId: 'fDvyk8ovpSWD9ivJYNmoPtCtqWgJMGzM',
       authorizationParams: {
-        redirect_uri: window.location.origin
+        redirect_uri: `${window.location.origin}/home`
       }
     }),
   ]

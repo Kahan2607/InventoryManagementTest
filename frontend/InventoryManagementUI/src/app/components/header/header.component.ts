@@ -17,8 +17,10 @@ export class HeaderComponent {
   }
 
   showCategories(){
-    console.log("showCategories works!");
-    
     this.router.navigate(['/categories']);
+  }
+
+  showItems(){
+    this.router.navigate(['/items'])
   }
 }

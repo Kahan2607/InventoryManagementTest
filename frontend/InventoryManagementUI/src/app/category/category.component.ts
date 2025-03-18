@@ -19,11 +19,13 @@ export class CategoryComponent {
 
   
   ngOnInit(): void {
+    
     this.categoryService.getCategoriesFromApi();
     this.categoryService.categories$.subscribe(
-    (data) => {
-      this.categoryItems = data;
-    });
+      (data) => {
+        this.categoryItems = data;
+      }
+    );
   }
 
   
@@ -40,7 +42,6 @@ export class CategoryComponent {
   }
 
   update(category: Category){
-    console.log(category);
     
     const dialogRef = this.dialog.open(DialogueBoxComponent, {
       width: '50%',
@@ -60,4 +61,5 @@ export class CategoryComponent {
     
     this.categoryService.deleteACategory(categoryId);
   }
+
 }

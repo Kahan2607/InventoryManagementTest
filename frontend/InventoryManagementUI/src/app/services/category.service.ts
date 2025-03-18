@@ -9,6 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 export class CategoryService {
   private categoriesSubject = new BehaviorSubject<Category[]>([]); // Holds category list
   categories$ = this.categoriesSubject.asObservable(); // Expose as observable
+  
   constructor(private http: HttpClient) { }
 
   getCategoriesFromApi(){

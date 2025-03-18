@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { ItemComponent } from './item/item.component';
 import { AuthGuard } from '@auth0/auth0-angular';
 import { Auth0Component } from './auth0/auth0.component';
 
@@ -24,4 +25,10 @@ export const routes: Routes = [
             return import('./category/category.component').then((m) => m.CategoryComponent);
         }
     },
+    {
+        path: 'items',
+        loadComponent: () => {
+            return import('./item/item.component').then(m => m.ItemComponent);
+        }
+    }
 ];

@@ -54,10 +54,6 @@ export class DialogueBoxComponent implements OnInit {
         this._categoryService.addCategoryToApi(newCategory);
       }
       if(this.inputData.title === 'Edit'){
-        console.log(this.inputData.categoryId);
-        
-        console.log("this code is reacting dialog component:",newCategory);
-        
         this._categoryService.editAndUpdateCategory(newCategory);
       }
 

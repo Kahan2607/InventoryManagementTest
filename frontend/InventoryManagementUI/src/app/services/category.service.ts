@@ -28,8 +28,6 @@ export class CategoryService {
   }
 
   editAndUpdateCategory(category: Category){
-    console.log("this code is reacting the service:", category);
-    
     const url = `https://localhost:5034/api/category/update-category${category.categoryId}`;
     this.http.put(url, category).subscribe(() => {
       this.getCategoriesFromApi();

@@ -13,10 +13,10 @@ export class CategoryService {
 
   getCategoriesFromApi(){
     const url = 'https://localhost:5034/api/category';
-    this.http.get<Category[]>(url).subscribe(
-      (data) => this.categoriesSubject.next(data),
-      (error) => console.log("Error fetching the data", error),
-    );
+    this.http.get<Category[]>(url).subscribe({
+      next: data => this.categoriesSubject.next(data),
+      error: error => console.log("Error fetching the data", error)
+  });
   }
 
   addCategoryToApi(category: Category){

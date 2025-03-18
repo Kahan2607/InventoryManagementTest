@@ -3,7 +3,7 @@
     
   <button (click)="openDialog()">Add Category</button>
 
-  <table class="category-list-table" *ngIf="categoryItems.length > 0">
+  <table class="category-list-table">
       <thead>
         <tr>
           <th>CategoryId</th>
@@ -16,6 +16,7 @@
           <td>{{ items.categoryId }}</td>
           <td>{{ items.name }}</td>
           <td>{{ items.active }}</td>
+          
         </tr>
       </tbody>
     </table>

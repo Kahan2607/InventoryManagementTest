@@ -45,22 +45,9 @@ export class DialogueBoxComponent implements OnInit {
         active: this.addCategoryForm.value.active
       };
       console.log("submit works");
-      
-      // console.log(newCategory);
-      // this._categoryService.addCategoryToApi(newCategory);
-      // this.addCategoryForm.reset();
-      // this.closeDialog();
-
-      this._categoryService.addCategoryToApi(newCategory).subscribe({
-        next: (response) => {
-          console.log("Category added successfully!", response);
-          this.addCategoryForm.reset();
-          this.closeDialog();
-        },
-        error: (err) => {
-          console.error("Error adding category:", err);
-        }
-      });
+      this._categoryService.addCategoryToApi(newCategory);
+      this.addCategoryForm.reset();
+      this.closeDialog();
     }
   }
 }

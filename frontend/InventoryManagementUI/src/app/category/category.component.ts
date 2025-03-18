@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../model/category.type';
-import { catchError } from 'rxjs';
 import { NgFor } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogueBoxComponent } from '../components/dialogue-box/dialogue-box.component';
-import { Title } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-category',
-  imports: [NgFor],
+  imports: [NgFor, FormsModule],
   templateUrl: './category.component.html',
   styleUrl: './category.component.scss'
 })
@@ -41,6 +40,8 @@ export class CategoryComponent {
   }
 
   update(category: Category){
+    console.log(category);
+    
     const dialogRef = this.dialog.open(DialogueBoxComponent, {
       width: '50%',
       enterAnimationDuration: '500ms',
@@ -52,5 +53,11 @@ export class CategoryComponent {
         active: false,
       }
     });
+  }
+
+  deleteCategory(categoryId: Category['categoryId']){
+    console.log(categoryId);
+    
+    this.categoryService.deleteACategory(categoryId);
   }
 }

@@ -5,7 +5,7 @@
 <div mat-dialog-content>
     <mat-form-field>
         <mat-label>Name</mat-label>
-        <input matInput formControlName="name" placeholder="{{data.name}}">
+        <input matInput formControlName="name" [(ngModel)]="data.name">
     </mat-form-field>
     <div>
         <mat-checkbox formControlName="active">Is Active</mat-checkbox>

@@ -33,4 +33,13 @@ export class CategoryService {
       this.getCategoriesFromApi();
     });
   }
+
+  deleteACategory(categoryId: Category['categoryId']){
+    console.log(categoryId);
+    
+    const url = `https://localhost:5034/api/category/delete-category${categoryId}`;
+    this.http.delete(url).subscribe(() => {
+      this.getCategoriesFromApi();
+    } );
+  }
 }

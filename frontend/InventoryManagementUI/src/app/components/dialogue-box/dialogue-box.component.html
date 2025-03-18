@@ -1,10 +1,11 @@
 <!-- <p>dialogue-box works!</p> -->
 <form [formGroup]="addCategoryForm">
-<h1 mat-dialog-title>{{inputData.title}}</h1>
+<h1 mat-dialog-title>{{data.title}}</h1>
+<!-- <input type="hidden" > -->
 <div mat-dialog-content>
     <mat-form-field>
         <mat-label>Name</mat-label>
-        <input matInput formControlName="name">
+        <input matInput formControlName="name" placeholder="{{data.name}}">
     </mat-form-field>
     <div>
         <mat-checkbox formControlName="active">Is Active</mat-checkbox>

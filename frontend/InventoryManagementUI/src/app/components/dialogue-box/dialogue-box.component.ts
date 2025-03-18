@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
@@ -31,6 +31,8 @@ export class DialogueBoxComponent implements OnInit {
 
   ngOnInit(): void {
     this.inputData = this.data;
+    console.log(this.inputData.title);
+    
   }
 
   closeDialog(){
@@ -39,13 +41,26 @@ export class DialogueBoxComponent implements OnInit {
 
   onSubmit(){
     if(this.addCategoryForm.valid){
+      // let categoryId = this.inputData.categoryId !== undefined ? this.inputData.categoryId : 0;
+      console.log(this.inputData.categoryId);
+      
       const newCategory: Category = {
-        categoryId: 0,
+        categoryId: this.inputData.categoryId,
         name: this.addCategoryForm.value.name,
         active: this.addCategoryForm.value.active
       };
-      console.log("submit works");
-      this._categoryService.addCategoryToApi(newCategory);
+
+      if(this.inputData.title === 'Add'){
+        this._categoryService.addCategoryToApi(newCategory);
+      }
+      if(this.inputData.title === 'Edit'){
+        console.log(this.inputData.categoryId);
+        
+        console.log("this code is reacting dialog component:",newCategory);
+        
+        this._categoryService.editAndUpdateCategory(newCategory);
+      }
+
       this.addCategoryForm.reset();
       this.closeDialog();
     }

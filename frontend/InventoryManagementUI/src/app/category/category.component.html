@@ -9,6 +9,7 @@
           <th>CategoryId</th>
           <th>CategoryName</th>
           <th>Active</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -16,7 +17,7 @@
           <td>{{ items.categoryId }}</td>
           <td>{{ items.name }}</td>
           <td>{{ items.active }}</td>
-          
+          <td><button (click)="update(items)">Edit</button></td>
         </tr>
       </tbody>
     </table>

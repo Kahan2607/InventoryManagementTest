@@ -5,6 +5,7 @@ import { catchError } from 'rxjs';
 import { NgFor } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogueBoxComponent } from '../components/dialogue-box/dialogue-box.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-category',
@@ -34,9 +35,22 @@ export class CategoryComponent {
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms',
       data:{
-        title: 'Add Edit'
+        title: 'Add'
       }
     });
   }
 
+  update(category: Category){
+    const dialogRef = this.dialog.open(DialogueBoxComponent, {
+      width: '50%',
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
+      data:{
+        title: 'Edit',
+        categoryId: category.categoryId,
+        name: category.name,
+        active: false,
+      }
+    });
+  }
 }

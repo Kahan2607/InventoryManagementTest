@@ -57,7 +57,6 @@ export class CategoryComponent {
   }
 
   deleteCategory(categoryId: Category['categoryId']){
-    console.log(categoryId);
     
     this.categoryService.deleteACategory(categoryId);
   }

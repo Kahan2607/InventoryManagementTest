@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import { ItemComponent } from './item/item.component';
 import { AuthGuard } from '@auth0/auth0-angular';
 import { Auth0Component } from './auth0/auth0.component';
+import { AddItemComponent } from './components/add-item/add-item.component';
 
 export const routes: Routes = [
     {
@@ -29,6 +30,12 @@ export const routes: Routes = [
         path: 'items',
         loadComponent: () => {
             return import('./item/item.component').then(m => m.ItemComponent);
+        }
+    },
+    {
+        path: 'items/add-item',
+        loadComponent: () => {
+            return import('./components/add-item/add-item.component').then( m => m.AddItemComponent);
         }
     }
 ];

@@ -1,21 +1,25 @@
 <!-- <p>category works!</p> -->
+
 <div class="container">
-    <table class="item-list-table">
-        <thead>
-          <tr>
-            <th>ItemId</th>
-            <th>CategoryName</th>
-            <th>ItemName</th>
-            <th>Active</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of itemsData">
-            <td>{{ item.itemId }}</td>
-            <td>{{ item.categoryName }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.active }}</td>
-          </tr>
-        </tbody>
-      </table>
+  <button (click)="addNewItem()">Add Item</button>
+  <table class="item-list-table">
+    <thead>
+      <tr>
+        <th>ItemId</th>
+        <th>CategoryName</th>
+        <th>ItemName</th>
+        <th>Active</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of itemsData">
+        <td>{{ item.itemId }}</td>
+        <td>{{ item.categoryName }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.active }}</td>
+        <td><button (click)="DeleteItem(item.itemId)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
   </div>

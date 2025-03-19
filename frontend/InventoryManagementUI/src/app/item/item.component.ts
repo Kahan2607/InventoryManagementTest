@@ -5,6 +5,7 @@ import { NgFor } from '@angular/common';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../model/category.type';
 import { combineLatest, forkJoin, map, switchMap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-item',
@@ -21,8 +22,11 @@ export class ItemComponent {
     active: boolean;
   }[] = [];
   categories: Category[] = [];
-  constructor(private itemService: ItemService, private categoryService: CategoryService){
-  }
+  constructor(
+    private itemService: ItemService, 
+    private categoryService: CategoryService,
+    private router: Router
+  ){}
 
   ngOnInit(): void{
     this.itemService.getItemsFromApi();
@@ -44,4 +48,12 @@ export class ItemComponent {
     });
   }
 
+  addNewItem(){
+    this.router.navigate(['/items/add-item'])
+  }
+
+  DeleteItem(itemID: Item['itemId']){
+    this.itemService.deleteItem(itemID);
+  }
+  
 }

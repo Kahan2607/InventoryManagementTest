@@ -20,7 +20,7 @@ export class CategoryService {
   });
   }
 
-  addCategoryToApi(category: Category){
+  addCategoryByApi(category: Category){
     // console.log(category);
     const url = 'https://localhost:5034/api/category/add-category';
     this.http.post(url, category).subscribe(() => {

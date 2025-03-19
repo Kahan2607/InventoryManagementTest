@@ -51,7 +51,7 @@ export class DialogueBoxComponent implements OnInit {
       };
 
       if(this.inputData.title === 'Add'){
-        this._categoryService.addCategoryToApi(newCategory);
+        this._categoryService.addCategoryByApi(newCategory);
       }
       if(this.inputData.title === 'Edit'){
         this._categoryService.editAndUpdateCategory(newCategory);

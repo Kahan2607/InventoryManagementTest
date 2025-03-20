@@ -82,7 +82,6 @@ export class AddSaleComponent {
         price: this.addSaleForm.value.price,
         salesAmount: this.addSaleForm.value.price * this.addSaleForm.value.quantity, 
         salesDate: this.addSaleForm.value.salesDate,
-        // insertedDate: today,
       };
 
       const salesDate = new Date(this.addSaleForm.value.salesDate);

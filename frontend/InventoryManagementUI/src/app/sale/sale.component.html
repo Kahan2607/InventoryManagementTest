@@ -11,6 +11,7 @@
           <th>SalesAmount</th>
           <th>SalesDate</th>
           <th>InsertedDate</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -23,8 +24,8 @@
           <td>{{ sale.salesDate }}</td>
           <td>{{ sale.insertedDate }}</td>
           <td>
-            <!-- <button (click)="deleteItem(item.itemId)">Delete</button>
-            <button (click)="updateItem(item)">Edit</button> -->
+            <button (click)="deleteSale(sale.salesId)">Delete</button>
+            <!-- <button (click)="updateItem(item)">Edit</button> -->
           </td>
         </tr>
       </tbody>

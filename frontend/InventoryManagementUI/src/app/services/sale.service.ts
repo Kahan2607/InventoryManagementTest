@@ -29,4 +29,11 @@ export class SaleService {
       this.getAllSalesDetailsFromApi();
     });
   }
+
+  deleteSalesRecord(salesId: Sale['salesId']){
+    const url = `https://localhost:5034/api/sale/delete-sale${salesId}`;
+    this.http.delete(url).subscribe(() => {
+      this.getAllSalesDetailsFromApi();
+    });
+  }
 }

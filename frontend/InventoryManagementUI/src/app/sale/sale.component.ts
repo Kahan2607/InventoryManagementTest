@@ -5,6 +5,7 @@ import { combineLatest, map } from 'rxjs';
 import { Item } from '../model/item.type';
 import { NgFor } from '@angular/common';
 import { Router } from '@angular/router';
+import { Sale } from '../model/sale.type';
 
 @Component({
   selector: 'app-sale',
@@ -59,4 +60,8 @@ export class SaleComponent {
     this.router.navigate(['sales/add-sales']);
   }
 
+
+  deleteSale(salesId: Sale['salesId']){
+    this.saleService.deleteSalesRecord(salesId);
+  }
 }

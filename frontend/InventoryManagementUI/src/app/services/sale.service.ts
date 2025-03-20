@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Sale } from '../model/sale.type';
 import { BehaviorSubject } from 'rxjs';
+import { AddSale } from '../model/addSale.type';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,12 @@ export class SaleService {
       next: data => this.saleSubject.next(data),
       error: error => console.log(error),
     }); 
+  }
+
+  addNewSalesRecord(sale: AddSale){
+    const url = 'https://localhost:5034/api/sale/add-sale';
+    this.http.post(url, sale).subscribe(() => {
+      this.getAllSalesDetailsFromApi();
+    });
   }
 }

@@ -4,6 +4,7 @@ import { ItemService } from '../services/item.service';
 import { combineLatest, map } from 'rxjs';
 import { Item } from '../model/item.type';
 import { NgFor } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sale',
@@ -26,6 +27,7 @@ export class SaleComponent {
   constructor(
     private itemService: ItemService,
     private saleService: SaleService,
+    private router: Router,
   )
   {
   }
@@ -47,9 +49,14 @@ export class SaleComponent {
     .subscribe((data) => {
       this.salesData = data;
       console.log("After subscribing", data);
-      
+
     });
   }
 
+  addNewSale(){
+    console.log("hello in the add new sale method of sale component");
+    
+    this.router.navigate(['sales/add-sales']);
+  }
 
 }

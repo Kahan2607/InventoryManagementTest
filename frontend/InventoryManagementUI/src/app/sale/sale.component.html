@@ -1,1 +1,32 @@
-<p>sale works!</p>
+
+<div class="container">
+    <!-- <button (click)="addNewItem()">Add Item</button> -->
+    <table class="item-list-table">
+      <thead>
+        <tr>
+          <th>SaleId</th>
+          <th>ItemName</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>SalesAmount</th>
+          <th>SalesDate</th>
+          <th>InsertedDate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of salesData">
+          <td>{{ sale.salesId }}</td>
+          <td>{{ sale.itemName }}</td>
+          <td>{{ sale.quantity }}</td>
+          <td>{{ sale.price }}</td>
+          <td>{{ sale.salesAmount }}</td>
+          <td>{{ sale.salesDate }}</td>
+          <td>{{ sale.insertedDate }}</td>
+          <td>
+            <!-- <button (click)="deleteItem(item.itemId)">Delete</button>
+            <button (click)="updateItem(item)">Edit</button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

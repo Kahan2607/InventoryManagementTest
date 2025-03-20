@@ -21,6 +21,10 @@ export class HeaderComponent {
   }
 
   showItems(){
-    this.router.navigate(['/items'])
+    this.router.navigate(['/items']);
+  }
+
+  showSales(){
+    this.router.navigate(['/sales']);
   }
 }

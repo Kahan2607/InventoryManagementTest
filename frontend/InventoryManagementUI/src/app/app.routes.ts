@@ -43,5 +43,12 @@ export const routes: Routes = [
         loadComponent: () => {
             return import('./components/add-item/add-item.component').then( m => m.AddItemComponent);
         }
+    },
+    {
+        path: 'sales',
+        loadComponent: () => {
+            return import('./sale/sale.component').then( m => m.SaleComponent );
+        }
     }
+
 ];

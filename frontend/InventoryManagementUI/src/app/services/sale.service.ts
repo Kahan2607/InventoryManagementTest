@@ -11,6 +11,9 @@ export class SaleService {
   private saleSubject = new BehaviorSubject<Sale[]>([]);
   sales$ = this.saleSubject.asObservable();
 
+  private dataSource = new BehaviorSubject<string>('0');
+  currentData = this.dataSource.asObservable();
+
   constructor(private http: HttpClient) { 
 
   }
@@ -35,5 +38,18 @@ export class SaleService {
     this.http.delete(url).subscribe(() => {
       this.getAllSalesDetailsFromApi();
     });
+  }
+
+  updateSalesRecord(sale: AddSale){
+      console.log("Inside service");
+      
+      const url = `https://localhost:5034/api/sale/update-sale${sale.salesId}`;
+      this.http.put(url, sale).subscribe(() =>{
+        this.getAllSalesDetailsFromApi();
+      });
+    }
+
+  updateData(data: string) {
+    this.dataSource.next(data);
   }
 }

@@ -56,5 +56,11 @@ export const routes: Routes = [
             return import('./components/add-sale/add-sale.component').then(m => m.AddSaleComponent);
         }
     },
+    {
+        path: 'sales/update-sales',
+        loadComponent: () => {
+            return import('./components/add-sale/add-sale.component').then( m => m.AddSaleComponent);
+        }
+    },
 
 ];

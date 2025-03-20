@@ -61,7 +61,18 @@ export class SaleComponent {
   }
 
 
-  deleteSale(salesId: Sale['salesId']){
+  deleteSaleRecord(salesId: Sale['salesId']){
     this.saleService.deleteSalesRecord(salesId);
+  }
+
+  updateSalesRecord(sale: Sale){
+    const isEdit = true;
+    const saleId = sale['salesId'];
+    this.sendData(saleId.toString());
+    this.router.navigate(['sales/update-sales']);
+  }
+
+  sendData(saleId: string) {
+    this.saleService.updateData(saleId);
   }
 }

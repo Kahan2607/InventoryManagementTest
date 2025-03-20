@@ -22,6 +22,8 @@ export class AddItemComponent {
     isEdit: boolean;
   }[] = [];
 
+  data: string = '';
+  newData: number = 0;
   constructor
   (
     private _formBuilder: FormBuilder, 
@@ -30,6 +32,12 @@ export class AddItemComponent {
     private router: Router,
   )
   {
+    this._itemService.currentData.subscribe(data => this.data = data);
+    console.log(this.data);
+    this.newData = parseInt(this.data);
+    console.log(typeof(this.newData));
+    
+
     this.addItemForm = this._formBuilder.group({
       name: ['', Validators.required],
       category: ['', Validators.required],
@@ -52,25 +60,26 @@ export class AddItemComponent {
     ))
     .subscribe(data => {
       this.categoryItem = data;
-    });        
+    });  
+      
   }
 
   async onSubmit(){
     if(this.addItemForm.valid){
       
       const newItem: Item = {
-        itemId: 0,
+        itemId: this.newData,
         categoryId: this.addItemForm.value.category,
         name: this.addItemForm.value.name,
         active: this.addItemForm.value.active
       };
 
-      if(this.categoryItem[0].isEdit === false){
+      if(newItem.itemId === 0){
         await this._itemService.addItemByApi(newItem);
       }
-      // if(this.inputData.title === 'Edit'){
-      //   this._categoryService.editAndUpdateCategory(newCategory);
-      // }
+      else{
+        this._itemService.updateItemByApi(newItem);
+      }
 
       this.addItemForm.reset();
       this.router.navigate(['/items']);

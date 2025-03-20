@@ -10,6 +10,10 @@ export class ItemService {
   private itemsSubject = new BehaviorSubject<Item[]>([]);
   items$ = this.itemsSubject.asObservable();
   
+  private dataSource = new BehaviorSubject<string>('0');
+  currentData = this.dataSource.asObservable();
+
+  
 
   constructor(private http: HttpClient) { }
 
@@ -41,5 +45,16 @@ export class ItemService {
     this.http.delete(url).subscribe(() => {
       this.getItemsFromApi();
     });
+  }
+
+  updateItemByApi(item: Item){
+    const url = `https://localhost:5034/api/item/update-item${item.itemId}`;
+    this.http.put(url, item).subscribe(() =>{
+      this.getItemsFromApi();
+    });
+  }
+
+  updateData(data: string) {
+    this.dataSource.next(data);
   }
 }

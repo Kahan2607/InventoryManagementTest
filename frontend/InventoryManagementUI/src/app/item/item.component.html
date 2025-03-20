@@ -18,7 +18,10 @@
         <td>{{ item.categoryName }}</td>
         <td>{{ item.name }}</td>
         <td>{{ item.active }}</td>
-        <td><button (click)="DeleteItem(item.itemId)">Delete</button></td>
+        <td>
+          <button (click)="deleteItem(item.itemId)">Delete</button>
+          <button (click)="updateItem(item)">Edit</button>
+        </td>
       </tr>
     </tbody>
   </table>

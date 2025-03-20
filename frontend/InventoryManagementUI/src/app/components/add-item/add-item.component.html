@@ -9,9 +9,11 @@
 
         <label for="category">Category</label>
         <select formControlName="category" >
-            <option *ngFor="let categories of categoryItem" [value]="categories.categoryId">{{categories.categoryName}}</option>   
+            <option *ngFor="let category of categoryItem" [value]="category.categoryId">
+                {{ category.categoryName }}
+            </option>
         </select>
-        <div *ngIf="addItemForm.get('category')?.invalid && addItemForm.get('name')?.touched" class="validation-warning">
+        <div *ngIf="addItemForm.get('category')?.invalid && addItemForm.get('category')?.touched" class="validation-warning">
             'Category' is required
         </div>
 

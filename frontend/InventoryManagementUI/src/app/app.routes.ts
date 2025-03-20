@@ -37,5 +37,11 @@ export const routes: Routes = [
         loadComponent: () => {
             return import('./components/add-item/add-item.component').then( m => m.AddItemComponent);
         }
+    },
+    {
+        path: 'items/update-item',
+        loadComponent: () => {
+            return import('./components/add-item/add-item.component').then( m => m.AddItemComponent);
+        }
     }
 ];

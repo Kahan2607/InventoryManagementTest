@@ -52,8 +52,19 @@ export class ItemComponent {
     this.router.navigate(['/items/add-item'])
   }
 
-  DeleteItem(itemID: Item['itemId']){
+  deleteItem(itemID: Item['itemId']){
     this.itemService.deleteItem(itemID);
+  }
+
+  updateItem(item: Item){
+    const isEdit = true;
+    const itemId = item['itemId'];
+    this.sendData(itemId.toString());
+    this.router.navigate(['items/update-item']);
+  }
+
+  sendData(itemId: string) {
+    this.itemService.updateData(itemId);
   }
   
 }

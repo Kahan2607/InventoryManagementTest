@@ -2,7 +2,7 @@
     <form [formGroup]="addItemForm">
         <!-- <input type="hidden" [value]="categoryItem[0].isEdit"> -->
         <label for="name">Name</label>
-        <input type="text" formControlName="name" placeholder="Enter the name">
+        <input type="text" formControlName="name" placeholder="Enter the name" [value]="editItemData.name">
         <div *ngIf="addItemForm.get('name')?.invalid && addItemForm.get('name')?.touched" class="validation-warning">
             'Name' is required
         </div>

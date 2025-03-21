@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { Item } from '../model/item.type';
 
 @Injectable({
@@ -13,6 +13,8 @@ export class ItemService {
   private dataSource = new BehaviorSubject<string>('0');
   currentData = this.dataSource.asObservable();
 
+  private itemDataSource = new BehaviorSubject<Item | null>(null);;
+  currentItemData = this.itemDataSource.asObservable();
   
 
   constructor(private http: HttpClient) { }
@@ -56,5 +58,9 @@ export class ItemService {
 
   updateData(data: string) {
     this.dataSource.next(data);
+  }
+
+  updateItemData(item: Item){
+    this.itemDataSource.next(item);
   }
 }

@@ -60,11 +60,16 @@ export class ItemComponent {
     const isEdit = true;
     const itemId = item['itemId'];
     this.sendData(itemId.toString());
+    this.sendItemData(item);
     this.router.navigate(['items/update-item']);
   }
 
   sendData(itemId: string) {
     this.itemService.updateData(itemId);
+  }
+
+  sendItemData(item: Item){
+    this.itemService.updateItemData(item);
   }
   
 }

@@ -22,6 +22,13 @@ export class AddItemComponent {
     isEdit: boolean;
   }[] = [];
 
+  editItemData: Item = {
+    categoryId: 0,
+    itemId: 0,
+    name: '',
+    active: false
+  };
+
   data: string = '';
   newData: number = 0;
   constructor
@@ -33,9 +40,7 @@ export class AddItemComponent {
   )
   {
     this._itemService.currentData.subscribe(data => this.data = data);
-    console.log(this.data);
     this.newData = parseInt(this.data);
-    console.log(typeof(this.newData));
     
 
     this.addItemForm = this._formBuilder.group({
@@ -43,12 +48,31 @@ export class AddItemComponent {
       category: ['', Validators.required],
       active: [false, Validators.required]
     });
+
+    if (this.newData !== 0) {
+      console.log(this.newData);
+      
+      this._itemService.currentItemData.subscribe(item => {
+        if (item) {
+          this.editItemData = { ...item }; 
+          console.log("Received Item Data:", this.editItemData);
+
+          this.addItemForm.patchValue({
+            name: this.editItemData.name,
+            category: this.editItemData.categoryId,
+            active: this.editItemData.active
+          });
+        }
+      });
+    }
   }
 
   ngOnInit(){
     this._categoryService.getCategoriesFromApi();
 
     const categoryData$ = this._categoryService.categories$;
+
+    
 
     categoryData$.pipe(
       map((categories: Category[]) =>
@@ -64,6 +88,11 @@ export class AddItemComponent {
       
   }
 
+  ngOnDestroy(){
+    console.log("add-item component destroyed.");
+    
+  }
+
   async onSubmit(){
     if(this.addItemForm.valid){
       
@@ -73,16 +102,32 @@ export class AddItemComponent {
         name: this.addItemForm.value.name,
         active: this.addItemForm.value.active
       };
-
+      
+      console.log(typeof(newItem.itemId), newItem.itemId);
+      
       if(newItem.itemId === 0){
         await this._itemService.addItemByApi(newItem);
+        console.log("inside add ");
+        
       }
       else{
         this._itemService.updateItemByApi(newItem);
+        console.log("inside update api");
+        
+
+        this.editItemData.categoryId = 0;
+        this.editItemData.itemId = 0;
+        this.editItemData.name = '';
+        this.editItemData.active = false;
+
+        this.newData = 0;
+        this._itemService.updateData(this.newData.toString())
+        this._itemService.updateItemData(this.editItemData);
       }
 
       this.addItemForm.reset();
       this.router.navigate(['/items']);
+      
     }
   }
 
